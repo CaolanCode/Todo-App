@@ -1,0 +1,19 @@
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+:root{
+  --base:#eaf6f6;
+  --secondary:#66bfbf;
+  --third:#f76b8a;
+  --fourth:#fcfefe;
+}
+
+.container{
+  min-height: 100vh;
+  min-width: 100vw;
+  background: var(--base);
+}
+
+.header{
+}
