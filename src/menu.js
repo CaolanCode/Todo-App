@@ -3,7 +3,7 @@ const menu = () => {
   panel.classList.add('menu-container')
   const addButton = document.createElement('button')
   addButton.classList.add('add-button')
-  addButton.innerHTML = '<span class="material-symbols-outlined">add</span>'
+  addButton.innerText = '+'
   panel.appendChild(addButton)
   return panel
 }
