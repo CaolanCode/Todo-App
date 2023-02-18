@@ -17,11 +17,21 @@ document.body.appendChild(container)
 // elements
 const addButton = document.querySelector('.add-button')
 
-function getTitle() {
+// functions
+function removeTitleInput() {
+  const titleContainer = document.querySelector('.title-container')
+  titleContainer.remove()
+  return
+}
+function getTitleInput() {
   const inputTitle = document.getElementById('title')
-  if(inputTitle) return
+  if(inputTitle) {
+    removeTitleInput()
+    return
+  }
   title()
 }
 
+
 // listeners
-addButton.addEventListener('click', getTitle)
+addButton.addEventListener('click', getTitleInput)
