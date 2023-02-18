@@ -1,12 +1,12 @@
 const title = () => {
   const menuContainer = document.querySelector('.menu-container')
-  const titleContainer = document.createElement('div')
-  titleContainer.classList.add('title-container')
+  const inputContainer = document.createElement('div')
+  inputContainer.classList.add('input-container')
   // input
   const input = document.createElement('input')
   input.type = 'text'
-  input.name = 'title'
-  input.id = 'title'
+  input.name = 'title-input'
+  input.id = 'title-input'
   input.placeholder = 'Enter title'
   // buttons
   const buttonContainer = document.createElement('div')
@@ -17,16 +17,12 @@ const title = () => {
   const cancelButton = document.createElement('button')
   cancelButton.classList.add('cancel-button')
   cancelButton.innerText = 'Cancel'
-  cancelButton.addEventListener('click', function(){
-    const titleContainer = document.querySelector('.title-container')
-    titleContainer.remove()
-  })
   buttonContainer.appendChild(sumbitButton)
   buttonContainer.appendChild(cancelButton)
   // append
-  titleContainer.appendChild(input)
-  titleContainer.appendChild(buttonContainer)
-  menuContainer.appendChild(titleContainer)
+  inputContainer.appendChild(input)
+  inputContainer.appendChild(buttonContainer)
+  menuContainer.appendChild(inputContainer)
   return menuContainer
 }
 

@@ -3,6 +3,8 @@ import './styles/style.css'
 import menu from './menu'
 import link from './google-link'
 import title from './title'
+import createTitle from './create-title'
+import removeTitleInput from './remove-title-input'
 
 //create elements
 const container = document.createElement('div')
@@ -15,18 +17,28 @@ document.head.appendChild(link())
 document.body.appendChild(container)
 
 // elements
-const addButton = document.querySelector('.add-button')
+const addProjectButton = document.querySelector('.add-project')
 
 // functions
+
 function getTitleInput() {
-  const inputTitle = document.getElementById('title')
+  const inputTitle = document.getElementById('title-input')
   if(inputTitle) {
     removeTitleInput()
     return
   }
   title()
+  const sumbitButton = document.querySelector('.submit-button')
+  sumbitButton.addEventListener('click', function(){
+    createTitle()
+    removeTitleInput()
+  })
+  const cancelButton = document.querySelector('.cancel-button')
+  cancelButton.addEventListener('click', function(){
+    removeTitleInput()
+  })
 }
 
 
 // listeners
-addButton.addEventListener('click', getTitleInput)
+addProjectButton.addEventListener('click', getTitleInput)
