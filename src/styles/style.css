@@ -37,19 +37,35 @@
 .menu-container{
   background: var(--sat-cyan);
   display: flex;
-  justify-content: center;
-  max-width: 10vw;
+  align-items: center;
+  max-width: 200px;
+  padding-top: 4vh;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.project-title{
+  font-size: 1.3rem;
 }
 
 .add-button{
-  width: 3vw;
-  height: 3vw; 
-  border-radius: 1.5vw;
   align-items: center;
   border: none;
-  margin-top: 3vh;
   cursor: pointer;
-  font-size: 2vw;
-  font-weight: 200;
+  height: 5vh;
+  width: 80%;
+  display: flex;
+  gap: 1vw;
+  background: transparent;
+}
+.add-button:hover{
+  background: var(--grayish-cyan);
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
