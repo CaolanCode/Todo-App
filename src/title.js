@@ -1,4 +1,3 @@
-
 const title = () => {
   const menuContainer = document.querySelector('.menu-container')
   const titleContainer = document.createElement('div')
@@ -18,6 +17,10 @@ const title = () => {
   const cancelButton = document.createElement('button')
   cancelButton.classList.add('cancel-button')
   cancelButton.innerText = 'Cancel'
+  cancelButton.addEventListener('click', function(){
+    const titleContainer = document.querySelector('.title-container')
+    titleContainer.remove()
+  })
   buttonContainer.appendChild(sumbitButton)
   buttonContainer.appendChild(cancelButton)
   // append

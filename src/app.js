@@ -18,11 +18,6 @@ document.body.appendChild(container)
 const addButton = document.querySelector('.add-button')
 
 // functions
-function removeTitleInput() {
-  const titleContainer = document.querySelector('.title-container')
-  titleContainer.remove()
-  return
-}
 function getTitleInput() {
   const inputTitle = document.getElementById('title')
   if(inputTitle) {
