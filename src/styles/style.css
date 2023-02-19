@@ -57,17 +57,26 @@
 }
 
 .project{
-  border: none;
-  cursor: pointer;
   height: 5vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   background: transparent;
+  justify-content: space-around;
   width: 80%;
 }
 .project:hover{
+  transition: 0.5s;
   background: var(--grayish-cyan);
+}
+.add-project{
+  justify-content: center;
+}
+.project, .delete-project{
+  border: none;
+  cursor: pointer;
+}
+.delete-project{
+  background: transparent;
 }
 
 .material-symbols-outlined {
