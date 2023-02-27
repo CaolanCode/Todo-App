@@ -1,8 +1,14 @@
 const Project = (name) => {
+  const list = []
   const getID = () => createID()
   const getName = () => name
-  const getList = () => []
-  return {getID, getName, getList}
+  const getList = () => list
+  return {getID,
+          getName, 
+          getList,
+          addTask(task) {
+            list.push(task)
+          }}
 }
 
 const Task = (title, description) => {
