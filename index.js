@@ -8,14 +8,17 @@ const Project = (name) => {
           getList,
           addTask(task) {
             list.push(task)
-          }}
+          }
+        }
 }
 
-const Task = (title, description) => {
+const Task = (title, description, dueDate , priority) => {
   const getID = () => createID()
   const getTitle = () => title
   const getDescription = () => description
-  return {getID, getTitle, getDescription}
+  const getDueDate = () => dueDate
+  const getPriority = () => priority
+  return {getID, getTitle, getDescription, getDueDate, getPriority}
 }
 
 function createID() {
