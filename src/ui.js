@@ -12,6 +12,28 @@ export const createUI = () => {
   const projectButton = document.createElement('button')
   projectButton.classList.add('add-project-btn')
   projectButton.innerText = 'Add Project'
+  projectButton.addEventListener('click', () => {
+    const checkForContainer = document.querySelector('.add-project-container')
+    if(checkForContainer) {
+      checkForContainer.remove()
+      return
+    }
+    const addProjectContainer = document.createElement('div')
+    addProjectContainer.classList.add('add-project-container')
+    const projectInput = document.createElement('input')
+    projectInput.classList.add('project-input')
+    projectInput.placeholder = 'Enter project'
+    const projectSumbit = document.createElement('button')
+    projectSumbit.classList.add('submit-btn')
+    projectSumbit.innerText = 'Submit'
+    const projectCancel = document.createElement('button')
+    projectCancel.classList.add('cancel-btn')
+    projectCancel.innerText = 'Cancel'
+    addProjectContainer.appendChild(projectInput)
+    addProjectContainer.appendChild(projectSumbit)
+    addProjectContainer.appendChild(projectCancel)
+    sideBar.appendChild(addProjectContainer)
+  })
   sideBar.appendChild(projectButton)
   // task container
   const taskContainer = document.createElement('div')
