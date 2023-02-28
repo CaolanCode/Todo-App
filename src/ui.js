@@ -1,3 +1,5 @@
+import {Project, Task} from './project.js'
+
 export const createUI = () => {
   // container
   const container = document.createElement('div')
@@ -24,6 +26,9 @@ export const createUI = () => {
     const projectSumbit = document.createElement('button')
     projectSumbit.classList.add('submit-btn')
     projectSumbit.innerText = 'Submit'
+    projectSumbit.addEventListener('click', () => {
+      createProject()
+    })
     const projectCancel = document.createElement('button')
     projectCancel.classList.add('cancel-btn')
     projectCancel.innerText = 'Cancel'
@@ -44,6 +49,10 @@ export const createUI = () => {
   const taskHeading = document.createElement('div')
   taskHeading.classList.add('task-heading')
   taskHeading.innerText = 'List'
+  const addTask = document.createElement('button')
+  addTask.classList.add('add-task')
+  addTask.innerHTML = '<span class="material-symbols-outlined">add</span>'
+  taskHeading.appendChild(addTask)
   taskContainer.appendChild(taskHeading)
   // append elements
   container.appendChild(header)
@@ -60,4 +69,10 @@ const removeProjectContainer = (() => {
     return true
   }
   return false
+})
+
+const createProject = (() => {
+  const input = document.querySelector('.project-input')
+  const project = Project(input.value)
+  removeProjectContainer()
 })
