@@ -88,6 +88,7 @@
   align-items: center;
   justify-content: space-around;
   border-bottom: 2px solid var(--gray);
+  padding-bottom: 1vh;
 }
 
 .add-task{
