@@ -13,9 +13,7 @@ export const createUI = () => {
   projectButton.classList.add('add-project-btn')
   projectButton.innerText = 'Add Project'
   projectButton.addEventListener('click', () => {
-    const checkForContainer = document.querySelector('.add-project-container')
-    if(checkForContainer) {
-      checkForContainer.remove()
+    if(removeProjectContainer()) {
       return
     }
     const addProjectContainer = document.createElement('div')
@@ -29,6 +27,11 @@ export const createUI = () => {
     const projectCancel = document.createElement('button')
     projectCancel.classList.add('cancel-btn')
     projectCancel.innerText = 'Cancel'
+    projectCancel.addEventListener('click', () => {
+      if(removeProjectContainer()) {
+        return
+      }
+    })
     addProjectContainer.appendChild(projectInput)
     addProjectContainer.appendChild(projectSumbit)
     addProjectContainer.appendChild(projectCancel)
@@ -38,6 +41,10 @@ export const createUI = () => {
   // task container
   const taskContainer = document.createElement('div')
   taskContainer.classList.add('task-container')
+  const taskHeading = document.createElement('div')
+  taskHeading.classList.add('task-heading')
+  taskHeading.innerText = 'List'
+  taskContainer.appendChild(taskHeading)
   // append elements
   container.appendChild(header)
   container.appendChild(sideBar)
@@ -46,3 +53,11 @@ export const createUI = () => {
   return container
 }
 
+const removeProjectContainer = (() => {
+  const checkForContainer = document.querySelector('.add-project-container')
+  if(checkForContainer) {
+    checkForContainer.remove()
+    return true
+  }
+  return false
+})
