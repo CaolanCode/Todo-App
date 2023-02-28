@@ -13,9 +13,13 @@ export const createUI = () => {
   projectButton.classList.add('add-project-btn')
   projectButton.innerText = 'Add Project'
   sideBar.appendChild(projectButton)
-
+  // task container
+  const taskContainer = document.createElement('div')
+  taskContainer.classList.add('task-container')
+  // append elements
   container.appendChild(header)
   container.appendChild(sideBar)
+  container.appendChild(taskContainer)
   
   return container
 }
