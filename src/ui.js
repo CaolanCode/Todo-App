@@ -46,10 +46,13 @@ export const createUI = () => {
   taskContainer.classList.add('task-container')
   const taskHeading = document.createElement('div')
   taskHeading.classList.add('task-heading')
-  taskHeading.innerText = 'List'
+  const taskTitle = document.createElement('div')
+  taskTitle.classList.add('project-title')
+  taskTitle.innerText = 'List'
   const addTask = document.createElement('button')
   addTask.classList.add('add-task')
   addTask.innerHTML = '<span class="material-symbols-outlined">add</span>'
+  taskHeading.appendChild(taskTitle)
   taskHeading.appendChild(addTask)
   taskContainer.appendChild(taskHeading)
   // append elements
@@ -88,6 +91,32 @@ const projectOnSidebar = (projectList) => {
     const projectBox = document.createElement('div')
     projectBox.innerText = project.getName()
     projectBox.classList.add('project-box')
+    projectBox.addEventListener('click', () => {
+      displayList(project)
+    })
     sidebar.appendChild(projectBox)
+  }
+}
+
+const displayList = (project) => {
+  const header = document.querySelector('.project-title')
+  const mainContainer = document.querySelector('.task-container')
+  header.innerText = project.getName()
+  const tasks = project.getList()
+  for(const taskId in tasks) {
+    const task = tasks[taskId]
+    const taskBox = document.createElement('div')
+    taskBox.classList.add('task-box')
+    // task title
+    const title = document.createElement('div')
+    title.innerText = task.getTitle()
+    title.classList.add('task-name')
+    // task description
+    const description = document.createElement('div')
+    description.innerText = task.getDescription()
+    description.classList.add('task-description')
+    taskBox.appendChild(title)
+    taskBox.appendChild(description)
+    mainContainer.appendChild(taskBox)
   }
 }
