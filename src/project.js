@@ -24,3 +24,23 @@ export const Task = (title, description, dueDate , priority) => {
 function createID() {
   return Math.random().toString(16).substring(2)
 }
+
+export const ProjectList = () => {
+  let projects = {}
+
+  const getProjects = () => projects
+
+  const addProject = (project) => {
+    projects[project.getID()] = project
+  }
+
+  const removeProject = (projectId) => {
+    delete projects[projectId]
+  }
+
+  return {
+    getProjects,
+    addProject,
+    removeProject
+  }
+}

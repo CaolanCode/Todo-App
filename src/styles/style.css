@@ -13,6 +13,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  border: 1px solid black;
 }
 
 .container{
@@ -38,15 +39,16 @@
   flex-direction: column;
   background: var(--gray);
   padding: 2vh .5vw;
+  gap: 2vh;
 }
 
-.add-project-btn{
+.add-project-btn, .project-box{
   padding: 1vh 1vw;
   border-radius: 1vh;
   border: none;
   height: 3vh;
 }
-.add-project-btn:hover{
+.add-project-btn:hover, .project-box:hover{
   background: white;
   cursor: pointer;
 }
@@ -65,12 +67,19 @@
 .submit-btn, .cancel-btn{
   border-radius: 1vh;
   color: white;
+  cursor: pointer;
 }
 .submit-btn{
   background: green;
 }
 .cancel-btn{
   background: red;
+}
+.project-box{
+  background: var(--turquoise);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* task container */
 .task-container{

@@ -1,4 +1,4 @@
-import {Project, Task} from './project.js'
+import {Project, Task, ProjectList} from './project.js'
 
 export const createUI = () => {
   // container
@@ -26,9 +26,7 @@ export const createUI = () => {
     const projectSumbit = document.createElement('button')
     projectSumbit.classList.add('submit-btn')
     projectSumbit.innerText = 'Submit'
-    projectSumbit.addEventListener('click', () => {
-      createProject()
-    })
+    projectSumbit.addEventListener('click', createProject)
     const projectCancel = document.createElement('button')
     projectCancel.classList.add('cancel-btn')
     projectCancel.innerText = 'Cancel'
@@ -71,8 +69,25 @@ const removeProjectContainer = (() => {
   return false
 })
 
-const createProject = (() => {
+const createProject = (event) => {
+  event.preventDefault()
+  const projectList = ProjectList()
   const input = document.querySelector('.project-input')
-  const project = Project(input.value)
+  const projectName = input.value
+  const project = Project(projectName)
   removeProjectContainer()
-})
+  projectList.addProject(project)
+  projectOnSidebar(projectList)
+}
+
+const projectOnSidebar = (projectList) => {
+  const projects = projectList.getProjects()
+  const sidebar = document.querySelector('.side-bar')
+  for(const projectId in projects) {
+    const project = projects[projectId]
+    const projectBox = document.createElement('div')
+    projectBox.innerText = project.getName()
+    projectBox.classList.add('project-box')
+    sidebar.appendChild(projectBox)
+  }
+}
