@@ -4,6 +4,8 @@ export const createUI = () => {
   // container
   const container = document.createElement('div')
   container.classList.add('container')
+  // create instance of ProjectList
+  const projectList = ProjectList()
   // header
   const header = document.createElement('div')
   header.classList.add('header')
@@ -26,7 +28,10 @@ export const createUI = () => {
     const projectSumbit = document.createElement('button')
     projectSumbit.classList.add('submit-btn')
     projectSumbit.innerText = 'Submit'
-    projectSumbit.addEventListener('click', createProject)
+    projectSumbit.addEventListener('click', (event) => {
+      const projectName = projectInput.value
+      createProject(projectName, projectList, event)
+    })
     const projectCancel = document.createElement('button')
     projectCancel.classList.add('cancel-btn')
     projectCancel.innerText = 'Cancel'
@@ -52,7 +57,21 @@ export const createUI = () => {
   const addTaskBtn = document.createElement('button')
   addTaskBtn.classList.add('add-task')
   addTaskBtn.innerHTML = '<span class="material-symbols-outlined">add</span>'
-  addTaskBtn.addEventListener('click', addTask)
+  addTaskBtn.addEventListener('click', () => {
+    const projectName = taskTitle.innerText
+    const project = projectList.getProjectByName(projectName)
+    if(!project) {
+      const makeProjectMSG = document.createElement('div')
+      makeProjectMSG.innerText = "Add a project"
+      makeProjectMSG.classList.add('add-project-message')
+      taskContainer.appendChild(makeProjectMSG)
+      setTimeout(() => {
+        makeProjectMSG.style.display = 'none'
+      }, 2000)
+      return
+    }
+    addTask(project)
+  })
   taskHeading.appendChild(taskTitle)
   taskHeading.appendChild(addTaskBtn)
   taskContainer.appendChild(taskHeading)
@@ -73,12 +92,11 @@ const removeProjectContainer = (() => {
   return false
 })
 
-const createProject = (event) => {
-  event.preventDefault()
-  const projectList = ProjectList()
-  const input = document.querySelector('.project-input')
-  const projectName = input.value
-  const project = Project(projectName)
+const createProject = (name, projectList, event = null) => {
+  if(event) {
+    event.preventDefault()
+  }
+  const project = Project(name)
   removeProjectContainer()
   projectList.addProject(project)
   projectOnSidebar(projectList)
@@ -110,19 +128,29 @@ const displayList = (project) => {
     taskBox.classList.add('task-box')
     // task title
     const title = document.createElement('div')
-    title.innerText = task.getTitle()
-    title.classList.add('task-name')
+    title.innerText = "Title: " + task.getTitle()
+    title.classList.add('task-item')
     // task description
     const description = document.createElement('div')
-    description.innerText = task.getDescription()
-    description.classList.add('task-description')
+    description.innerText = "Description: " + task.getDescription()
+    description.classList.add('task-item')
+    // date
+    const date = document.createElement('div')
+    date.innerText = "Date: " + task.getDueDate()
+    date.classList.add('task-item')
+    // priority
+    const priority = document.createElement('div')
+    priority.innerText = "Priority: " + task.getPriority()
+    priority.classList.add('task-item')
     taskBox.appendChild(title)
     taskBox.appendChild(description)
+    taskBox.appendChild(date)
+    taskBox.appendChild(priority)
     mainContainer.appendChild(taskBox)
   }
 }
 
-const addTask = () => {
+const addTask = (project) => {
   if(removeTaskInputContainer()) {
     return
   }
@@ -160,9 +188,20 @@ const addTask = () => {
   const taskSmbtBtn = document.createElement('button')
   taskSmbtBtn.classList.add('submit-btn')
   taskSmbtBtn.innerText = 'Submit'
+  taskSmbtBtn.addEventListener('click', () => {
+    const title = titleInput.value
+    const description = descriptionInput.value
+    const date = dateInput.value
+    const priority = priorityInput.value
+    const task = Task(title, description, date, priority)
+    project.addTask(task)
+    removeTaskInputContainer()
+    displayList(project)
+  })
   const taskCnclBtn = document.createElement('button')
   taskCnclBtn.classList.add('cancel-btn')
   taskCnclBtn.innerText = 'Cancel'
+  taskCnclBtn.addEventListener('click', removeTaskInputContainer)
   taskBtnContainer.appendChild(taskSmbtBtn)
   taskBtnContainer.appendChild(taskCnclBtn)
   addTaskContainer.appendChild(titleLabel)

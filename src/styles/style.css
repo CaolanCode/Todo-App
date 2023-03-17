@@ -147,3 +147,14 @@
   padding: 1vh 0;
   min-width: 1vw;
 }
+.add-project-message, .task-box{
+  background: var(--gray);
+  font-size: 1rem;
+  color: white;
+  padding: 1vw;
+  border-radius: 2vw;
+}
+.add-project-message{
+  position:absolute;
+  top: 30%;
+}
