@@ -49,11 +49,12 @@ export const createUI = () => {
   const taskTitle = document.createElement('div')
   taskTitle.classList.add('project-title')
   taskTitle.innerText = 'List'
-  const addTask = document.createElement('button')
-  addTask.classList.add('add-task')
-  addTask.innerHTML = '<span class="material-symbols-outlined">add</span>'
+  const addTaskBtn = document.createElement('button')
+  addTaskBtn.classList.add('add-task')
+  addTaskBtn.innerHTML = '<span class="material-symbols-outlined">add</span>'
+  addTaskBtn.addEventListener('click', addTask)
   taskHeading.appendChild(taskTitle)
-  taskHeading.appendChild(addTask)
+  taskHeading.appendChild(addTaskBtn)
   taskContainer.appendChild(taskHeading)
   // append elements
   container.appendChild(header)
@@ -120,3 +121,46 @@ const displayList = (project) => {
     mainContainer.appendChild(taskBox)
   }
 }
+
+const addTask = () => {
+  const mainContainer = document.querySelector('.task-container')
+  const addTaskContainer = document.createElement('div')
+  addTaskContainer.classList.add('task-input-container')
+  // title
+  const titleLabel = document.createElement('label')
+  titleLabel.innerText = 'Title: '
+  titleLabel.classList.add('task-label')
+  const titleInput = document.createElement('input')
+  titleInput.classList.add('task-input')
+  // description
+  const descriptionLabel = document.createElement('label')
+  descriptionLabel.innerText = 'Description: '
+  descriptionLabel.classList.add('task-label')
+  const descriptionInput = document.createElement('textarea')
+  descriptionInput.classList.add('task-input')
+  // date 
+  const dateLabel = document.createElement('label')
+  dateLabel.innerText = 'Date: '
+  dateLabel.classList.add('task-label')
+  const dateInput = document.createElement('input')
+  dateInput.classList.add('task-input')
+  dateInput.type = 'date'
+  // priority
+  const priorityLabel = document.createElement('label')
+  priorityLabel.innerText = 'Priority: '
+  priorityLabel.classList.add('task-label')
+  const priorityInput = document.createElement('input')
+  priorityInput.classList.add('task-input')
+
+  addTaskContainer.appendChild(titleLabel)
+  addTaskContainer.appendChild(titleInput)
+  addTaskContainer.appendChild(descriptionLabel)
+  addTaskContainer.appendChild(descriptionInput)
+  addTaskContainer.appendChild(dateLabel)
+  addTaskContainer.appendChild(dateInput)
+  addTaskContainer.appendChild(priorityLabel)
+  addTaskContainer.appendChild(priorityInput)
+  mainContainer.appendChild(addTaskContainer)
+}
+
+

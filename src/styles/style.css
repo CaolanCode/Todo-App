@@ -115,3 +115,24 @@
   background: rgba(0, 0, 0, 0.7);
   transition: 0.2s;
 }
+/* task input container */
+.task-input-container{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background: var(--gray);
+  color: white;
+  padding: 2vh 1vw;
+  position: absolute;
+  top: 30%;
+  border-radius: 2vh;
+  gap: 1vh;
+}
+.task-label{
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task-input{
+  padding: 1vh 0;
+}
