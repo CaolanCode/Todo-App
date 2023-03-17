@@ -123,6 +123,9 @@ const displayList = (project) => {
 }
 
 const addTask = () => {
+  if(removeTaskInputContainer()) {
+    return
+  }
   const mainContainer = document.querySelector('.task-container')
   const addTaskContainer = document.createElement('div')
   addTaskContainer.classList.add('task-input-container')
@@ -174,4 +177,12 @@ const addTask = () => {
   mainContainer.appendChild(addTaskContainer)
 }
 
+const removeTaskInputContainer = () => {
+  const container = document.querySelector('.task-input-container')
+  if(container) {
+    container.remove()
+    return true
+  }
+  return false
+}
 
