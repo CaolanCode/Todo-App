@@ -151,7 +151,17 @@ const addTask = () => {
   priorityLabel.classList.add('task-label')
   const priorityInput = document.createElement('input')
   priorityInput.classList.add('task-input')
-
+  // buttons
+  const taskBtnContainer = document.createElement('div')
+  taskBtnContainer.classList.add('task-btn-container')
+  const taskSmbtBtn = document.createElement('button')
+  taskSmbtBtn.classList.add('submit-btn')
+  taskSmbtBtn.innerText = 'Submit'
+  const taskCnclBtn = document.createElement('button')
+  taskCnclBtn.classList.add('cancel-btn')
+  taskCnclBtn.innerText = 'Cancel'
+  taskBtnContainer.appendChild(taskSmbtBtn)
+  taskBtnContainer.appendChild(taskCnclBtn)
   addTaskContainer.appendChild(titleLabel)
   addTaskContainer.appendChild(titleInput)
   addTaskContainer.appendChild(descriptionLabel)
@@ -160,6 +170,7 @@ const addTask = () => {
   addTaskContainer.appendChild(dateInput)
   addTaskContainer.appendChild(priorityLabel)
   addTaskContainer.appendChild(priorityInput)
+  addTaskContainer.appendChild(taskBtnContainer)
   mainContainer.appendChild(addTaskContainer)
 }
 

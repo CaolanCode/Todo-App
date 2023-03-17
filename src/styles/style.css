@@ -67,6 +67,7 @@
   border-radius: 1vh;
   color: white;
   cursor: pointer;
+  flex: 1;
 }
 .submit-btn{
   background: green;
@@ -126,6 +127,15 @@
   top: 30%;
   border-radius: 2vh;
   gap: 1vh;
+  box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3);
+}
+.task-input-container > :nth-child(n+9) {
+  grid-column: span 2;
+}
+.task-btn-container{
+  display: flex;
+  gap: 1vw;
+  height: 4vh;
 }
 .task-label{
   font-size: 1rem;
@@ -135,4 +145,5 @@
 }
 .task-input{
   padding: 1vh 0;
+  min-width: 1vw;
 }
