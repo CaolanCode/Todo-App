@@ -163,6 +163,13 @@ const displayList = (project) => {
     const priorityItem = document.createElement('div')
     priorityItem.innerText = task.getPriority()
     priorityItem.classList.add('task-item')
+    if(priorityItem.innerText === "High") {
+      priorityItem.style.color = "#FA1304"
+    } else if(priorityItem.innerText === "Medium") {
+      priorityItem.style.color = "orange"
+    } else {
+      priorityItem.style.color = "yellow"
+    }
     taskBox.appendChild(titleHeading)
     taskBox.appendChild(titleItem)
     taskBox.appendChild(descriptionHeading)
