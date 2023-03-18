@@ -13,6 +13,8 @@ export const createUI = () => {
   // sidebar
   const sideBar = document.createElement('div')
   sideBar.classList.add('side-bar')
+  const projectTitleContainer = document.createElement('div')
+  projectTitleContainer.classList.add('project-title-container')
   const projectButton = document.createElement('button')
   projectButton.classList.add('add-project-btn')
   projectButton.innerText = 'Add Project'
@@ -46,9 +48,12 @@ export const createUI = () => {
     sideBar.appendChild(addProjectContainer)
   })
   sideBar.appendChild(projectButton)
+  sideBar.appendChild(projectTitleContainer)
   // task container
   const taskContainer = document.createElement('div')
-  taskContainer.classList.add('task-container')
+  taskContainer.classList.add('display-container')
+  const taskTilesContainer = document.createElement('div')
+  taskTilesContainer.classList.add('task-display-container')
   const taskHeading = document.createElement('div')
   taskHeading.classList.add('task-heading')
   const taskTitle = document.createElement('div')
@@ -75,6 +80,7 @@ export const createUI = () => {
   taskHeading.appendChild(taskTitle)
   taskHeading.appendChild(addTaskBtn)
   taskContainer.appendChild(taskHeading)
+  taskContainer.appendChild(taskTilesContainer)
   // append elements
   container.appendChild(header)
   container.appendChild(sideBar)
@@ -104,7 +110,8 @@ const createProject = (name, projectList, event = null) => {
 
 const projectOnSidebar = (projectList) => {
   const projects = projectList.getProjects()
-  const sidebar = document.querySelector('.side-bar')
+  const projectTitleContainer = document.querySelector('.project-title-container')
+  projectTitleContainer.innerHTML = ""
   for(const projectId in projects) {
     const project = projects[projectId]
     const projectBox = document.createElement('div')
@@ -113,13 +120,14 @@ const projectOnSidebar = (projectList) => {
     projectBox.addEventListener('click', () => {
       displayList(project)
     })
-    sidebar.appendChild(projectBox)
+    projectTitleContainer.appendChild(projectBox)
   }
 }
 
 const displayList = (project) => {
   const header = document.querySelector('.project-title')
-  const mainContainer = document.querySelector('.task-container')
+  const displayContainer = document.querySelector('.task-display-container')
+  displayContainer.innerHTML = ""
   header.innerText = project.getName()
   const tasks = project.getList()
   for(const taskId in tasks) {
@@ -146,7 +154,7 @@ const displayList = (project) => {
     taskBox.appendChild(description)
     taskBox.appendChild(date)
     taskBox.appendChild(priority)
-    mainContainer.appendChild(taskBox)
+    displayContainer.appendChild(taskBox)
   }
 }
 
@@ -154,7 +162,7 @@ const addTask = (project) => {
   if(removeTaskInputContainer()) {
     return
   }
-  const mainContainer = document.querySelector('.task-container')
+  const displayContainer = document.querySelector('.task-display-container')
   const addTaskContainer = document.createElement('div')
   addTaskContainer.classList.add('task-input-container')
   // title
@@ -213,7 +221,7 @@ const addTask = (project) => {
   addTaskContainer.appendChild(priorityLabel)
   addTaskContainer.appendChild(priorityInput)
   addTaskContainer.appendChild(taskBtnContainer)
-  mainContainer.appendChild(addTaskContainer)
+  displayContainer.appendChild(addTaskContainer)
 }
 
 const removeTaskInputContainer = () => {
