@@ -190,10 +190,6 @@
   margin-top: 2vh;
   box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3);
 }
-.task-box > :first-child {
-  grid-column: span 2;
-
-}
 .task-title{
   font-size: 0.7rem;
 }

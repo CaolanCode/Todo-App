@@ -148,7 +148,8 @@ const displayList = (project) => {
     deleteTaskBtn.innerHTML = "<span class='material-symbols-outlined'>close</span>"
     deleteTaskBtn.classList.add("delete-task-button")
     deleteTaskBtn.addEventListener('click', () => {
-      // TODO: delete task
+      project.deleteTask(task)
+      displayList(project)
     })
     titleItem.appendChild(deleteTaskBtn)
     // task description

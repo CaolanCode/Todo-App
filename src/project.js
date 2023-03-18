@@ -1,5 +1,5 @@
 export const Project = (name) => {
-  const list = []
+  let list = []
   const getID = () => createID()
   const getName = () => name
   const getList = () => list
@@ -10,7 +10,7 @@ export const Project = (name) => {
             list.push(task)
           },
           deleteTask(task) {
-            list = list.map(ele => ele !== task)
+            list = list.filter(item => item !== task)
           }
         }
 }
@@ -25,7 +25,7 @@ export const Task = (title, description, dueDate , priority) => {
 }
 
 export const ProjectList = () => {
-  const projects = []
+  let projects = []
   
   const addProject = (project) => {
     projects.push(project)
