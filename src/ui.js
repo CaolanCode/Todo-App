@@ -32,6 +32,7 @@ export const createUI = () => {
     projectSumbit.innerText = 'Submit'
     projectSumbit.addEventListener('click', (event) => {
       const projectName = projectInput.value
+      if(!projectName) return
       createProject(projectName, projectList, event)
     })
     const projectCancel = document.createElement('button')
@@ -185,6 +186,7 @@ const addTask = (project) => {
   dateInput.classList.add('task-input')
   dateInput.type = 'date'
   // priority
+  let priority = "Low"
   const priorityLabel = document.createElement('label')
   priorityLabel.innerText = 'Priority: '
   priorityLabel.classList.add('task-label')
@@ -199,6 +201,11 @@ const addTask = (project) => {
   priorityInputLow.type = 'radio'
   priorityInputLow.id = 'low-priority'
   priorityInputLow.name = 'priority'
+  priorityInputLow.addEventListener('change', () => {
+    if(priorityInputLow.checked) {
+      priority = "Low"
+    }
+  })
   priorityInputLow.classList.add('radio')
   const priorityMedLabel = document.createElement('label')
   priorityMedLabel.classList.add('priority-label')
@@ -209,6 +216,11 @@ const addTask = (project) => {
   priorityInputMedium.classList.add('radio')
   priorityInputMedium.id = 'medium-priority'
   priorityInputMedium.name = 'priority'
+  priorityInputMedium.addEventListener('change', () => {
+    if(priorityInputMedium.checked) {
+      priority = "Medium"
+    }
+  })
   const priorityHighLabel = document.createElement('label')
   priorityHighLabel.classList.add('priority-label')
   priorityHighLabel.innerText = 'High:'
@@ -218,6 +230,11 @@ const addTask = (project) => {
   priorityInputHigh.classList.add('radio')
   priorityInputHigh.id = 'high-priority'
   priorityInputHigh.name = 'priority'
+  priorityInputHigh.addEventListener('change', () => {
+    if(priorityInputHigh.checked) {
+      priority = "High"
+    }
+  })
   priorityInputContainer.appendChild(priorityLowLabel)
   priorityInputContainer.appendChild(priorityInputLow)
   priorityInputContainer.appendChild(priorityMedLabel)
@@ -234,7 +251,6 @@ const addTask = (project) => {
     const title = titleInput.value
     const description = descriptionInput.value
     const date = dateInput.value
-    const priority = priorityInput.value
     const task = Task(title, description, date, priority)
     project.addTask(task)
     removeTaskInputContainer()
