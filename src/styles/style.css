@@ -165,6 +165,16 @@
   position:absolute;
   top: 30%;
 }
+.task-input-radio{
+  display: flex;
+  gap: 1vw;
+}
+.radio{
+  cursor: pointer;
+}
+.priority-label{
+  font-size: 0.7rem;
+}
 /* task display */
 .task-display-container{
   height: 100%;

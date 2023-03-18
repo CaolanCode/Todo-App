@@ -188,8 +188,42 @@ const addTask = (project) => {
   const priorityLabel = document.createElement('label')
   priorityLabel.innerText = 'Priority: '
   priorityLabel.classList.add('task-label')
-  const priorityInput = document.createElement('input')
-  priorityInput.classList.add('task-input')
+  const priorityInputContainer = document.createElement('div')
+  priorityInputContainer.classList.add('task-input')
+  priorityInputContainer.classList.add('task-input-radio')
+  const priorityLowLabel = document.createElement('label')
+  priorityLowLabel.innerText = 'Low:'
+  priorityLowLabel.classList.add('priority-label')
+  priorityLowLabel.htmlFor = "low-priority"
+  const priorityInputLow = document.createElement('input')
+  priorityInputLow.type = 'radio'
+  priorityInputLow.id = 'low-priority'
+  priorityInputLow.name = 'priority'
+  priorityInputLow.classList.add('radio')
+  const priorityMedLabel = document.createElement('label')
+  priorityMedLabel.classList.add('priority-label')
+  priorityMedLabel.innerText = 'Medium:'
+  priorityMedLabel.htmlFor = "medium-priority"
+  const priorityInputMedium = document.createElement('input')
+  priorityInputMedium.type = 'radio'
+  priorityInputMedium.classList.add('radio')
+  priorityInputMedium.id = 'medium-priority'
+  priorityInputMedium.name = 'priority'
+  const priorityHighLabel = document.createElement('label')
+  priorityHighLabel.classList.add('priority-label')
+  priorityHighLabel.innerText = 'High:'
+  priorityHighLabel.htmlFor = "high-priority"
+  const priorityInputHigh = document.createElement('input')
+  priorityInputHigh.type = 'radio'
+  priorityInputHigh.classList.add('radio')
+  priorityInputHigh.id = 'high-priority'
+  priorityInputHigh.name = 'priority'
+  priorityInputContainer.appendChild(priorityLowLabel)
+  priorityInputContainer.appendChild(priorityInputLow)
+  priorityInputContainer.appendChild(priorityMedLabel)
+  priorityInputContainer.appendChild(priorityInputMedium)
+  priorityInputContainer.appendChild(priorityHighLabel)
+  priorityInputContainer.appendChild(priorityInputHigh)
   // buttons
   const taskBtnContainer = document.createElement('div')
   taskBtnContainer.classList.add('task-btn-container')
@@ -219,7 +253,7 @@ const addTask = (project) => {
   addTaskContainer.appendChild(dateLabel)
   addTaskContainer.appendChild(dateInput)
   addTaskContainer.appendChild(priorityLabel)
-  addTaskContainer.appendChild(priorityInput)
+  addTaskContainer.appendChild(priorityInputContainer)
   addTaskContainer.appendChild(taskBtnContainer)
   displayContainer.appendChild(addTaskContainer)
 }
