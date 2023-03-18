@@ -116,11 +116,23 @@ const projectOnSidebar = (projectList) => {
   for(const projectId in projects) {
     const project = projects[projectId]
     const projectBox = document.createElement('div')
-    projectBox.innerText = project.getName()
     projectBox.classList.add('project-box')
-    projectBox.addEventListener('click', () => {
+    const projectButton = document.createElement('button')
+    projectButton.classList.add('project-btn')
+    projectButton.innerText = project.getName()
+    projectButton.addEventListener('click', () => {
       displayList(project)
     })
+    projectBox.appendChild(projectButton)
+    const deleteProjectBtn = document.createElement('button')
+    deleteProjectBtn.classList.add('delete-button')
+    deleteProjectBtn.innerHTML = "<span class='material-symbols-outlined'>close</span>"
+    deleteProjectBtn.addEventListener('click', () => {
+      projectList.removeProject(project)
+      projectOnSidebar(projectList)
+      displayList(project)
+    })
+    projectBox.appendChild(deleteProjectBtn)
     projectTitleContainer.appendChild(projectBox)
   }
 }
@@ -146,7 +158,7 @@ const displayList = (project) => {
     // delete task button
     const deleteTaskBtn = document.createElement('button')
     deleteTaskBtn.innerHTML = "<span class='material-symbols-outlined'>close</span>"
-    deleteTaskBtn.classList.add("delete-task-button")
+    deleteTaskBtn.classList.add("delete-button")
     deleteTaskBtn.addEventListener('click', () => {
       project.deleteTask(task)
       displayList(project)

@@ -34,11 +34,15 @@ export const ProjectList = () => {
     return projects.find(project => project.getName() === name || null)
   } 
   const getProjects = () => projects
+  const removeProject = (project) => {
+    projects = projects.filter(item => item !== project)
+  }
 
   return {
     addProject,
     getProjectByName,
-    getProjects
+    getProjects,
+    removeProject
   }
 }
 

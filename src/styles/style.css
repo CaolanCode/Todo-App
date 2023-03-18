@@ -13,7 +13,6 @@
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  border: 1px solid black;
 }
 
 .container{
@@ -41,7 +40,6 @@
   padding: 2vh .5vw;
   gap: 2vh;
 }
-
 .add-project-btn, .project-box{
   padding: 1vh 1vw;
   border-radius: 1vh;
@@ -52,7 +50,15 @@
   background: var(--white);
   cursor: pointer;
 }
-
+.project-btn{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex: 3;
+}
+.project-box{
+  display: flex;
+}
 .add-project-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -199,10 +205,8 @@
 }
 .title-item{
   font-size: 1.4rem;
-  display: flex;
-  justify-content: space-between;
 }
-.delete-task-button{
+.delete-button{
   color: red;
   background: transparent;
   border: none;
@@ -210,4 +214,9 @@
   border-radius: 2vw;
   cursor: pointer;
   font-weight: 700;
+  cursor: pointer;
+}
+.title-item{
+  display: flex;
+  justify-content: space-between;
 }
