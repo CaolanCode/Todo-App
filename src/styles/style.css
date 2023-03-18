@@ -13,6 +13,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  border: 1px solid black;
 }
 
 .container{
@@ -187,8 +188,11 @@
   grid-template-columns: 1fr 2fr;
   column-gap: 1vh;
   margin-top: 2vh;
-  border: 5px solid var(--turquoise);
   box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3);
+}
+.task-box > :first-child {
+  grid-column: span 2;
+
 }
 .task-title{
   font-size: 0.7rem;
@@ -196,4 +200,18 @@
 .task-title, .task-item{
   display: flex;
   align-items: center;
+}
+.title-item{
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+}
+.delete-task-button{
+  color: red;
+  background: transparent;
+  border: none;
+  width: 30%;
+  border-radius: 2vw;
+  cursor: pointer;
+  font-weight: 700;
 }

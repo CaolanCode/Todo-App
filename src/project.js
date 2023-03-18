@@ -8,6 +8,9 @@ export const Project = (name) => {
           getList,
           addTask(task) {
             list.push(task)
+          },
+          deleteTask(task) {
+            list = list.map(ele => ele !== task)
           }
         }
 }

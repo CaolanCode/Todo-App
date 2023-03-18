@@ -142,6 +142,15 @@ const displayList = (project) => {
     const titleItem = document.createElement('div')
     titleItem.innerText = task.getTitle()
     titleItem.classList.add('task-item')
+    titleItem.classList.add('title-item')
+    // delete task button
+    const deleteTaskBtn = document.createElement('button')
+    deleteTaskBtn.innerHTML = "<span class='material-symbols-outlined'>close</span>"
+    deleteTaskBtn.classList.add("delete-task-button")
+    deleteTaskBtn.addEventListener('click', () => {
+      // TODO: delete task
+    })
+    titleItem.appendChild(deleteTaskBtn)
     // task description
     const descriptionHeading = document.createElement('div')
     descriptionHeading.innerText = "Description:"
@@ -157,18 +166,12 @@ const displayList = (project) => {
     dateItem.innerText = task.getDueDate()
     dateItem.classList.add('task-item')
     // priority
-    const priorityHeading = document.createElement('div')
-    priorityHeading.innerText = "Priority:"
-    priorityHeading.classList.add('task-title')
-    const priorityItem = document.createElement('div')
-    priorityItem.innerText = task.getPriority()
-    priorityItem.classList.add('task-item')
-    if(priorityItem.innerText === "High") {
-      priorityItem.style.color = "#FA1304"
-    } else if(priorityItem.innerText === "Medium") {
-      priorityItem.style.color = "orange"
+    if(task.getPriority() === "High") {
+      taskBox.style.border = "5px solid #FA1304"
+    } else if(task.getPriority() === "Medium") {
+      taskBox.style.border = "5px solid orange"
     } else {
-      priorityItem.style.color = "yellow"
+      taskBox.style.border = "5px solid yellow"
     }
     taskBox.appendChild(titleHeading)
     taskBox.appendChild(titleItem)
@@ -176,8 +179,6 @@ const displayList = (project) => {
     taskBox.appendChild(descriptionItem)
     taskBox.appendChild(dateHeading)
     taskBox.appendChild(dateItem)
-    taskBox.appendChild(priorityHeading)
-    taskBox.appendChild(priorityItem)
     displayContainer.appendChild(taskBox)
   }
 }
