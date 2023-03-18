@@ -136,25 +136,41 @@ const displayList = (project) => {
     const taskBox = document.createElement('div')
     taskBox.classList.add('task-box')
     // task title
-    const title = document.createElement('div')
-    title.innerText = "Title: " + task.getTitle()
-    title.classList.add('task-item')
+    const titleHeading = document.createElement('div')
+    titleHeading.innerText = "Title:"
+    titleHeading.classList.add('task-title')
+    const titleItem = document.createElement('div')
+    titleItem.innerText = task.getTitle()
+    titleItem.classList.add('task-item')
     // task description
-    const description = document.createElement('div')
-    description.innerText = "Description: " + task.getDescription()
-    description.classList.add('task-item')
+    const descriptionHeading = document.createElement('div')
+    descriptionHeading.innerText = "Description:"
+    descriptionHeading.classList.add('task-title')
+    const descriptionItem = document.createElement('div')
+    descriptionItem.innerText = task.getDescription()
+    descriptionItem.classList.add('task-item')
     // date
-    const date = document.createElement('div')
-    date.innerText = "Date: " + task.getDueDate()
-    date.classList.add('task-item')
+    const dateHeading = document.createElement('div')
+    dateHeading.innerText = "Date:"
+    dateHeading.classList.add('task-title')
+    const dateItem = document.createElement('div')
+    dateItem.innerText = task.getDueDate()
+    dateItem.classList.add('task-item')
     // priority
-    const priority = document.createElement('div')
-    priority.innerText = "Priority: " + task.getPriority()
-    priority.classList.add('task-item')
-    taskBox.appendChild(title)
-    taskBox.appendChild(description)
-    taskBox.appendChild(date)
-    taskBox.appendChild(priority)
+    const priorityHeading = document.createElement('div')
+    priorityHeading.innerText = "Priority:"
+    priorityHeading.classList.add('task-title')
+    const priorityItem = document.createElement('div')
+    priorityItem.innerText = task.getPriority()
+    priorityItem.classList.add('task-item')
+    taskBox.appendChild(titleHeading)
+    taskBox.appendChild(titleItem)
+    taskBox.appendChild(descriptionHeading)
+    taskBox.appendChild(descriptionItem)
+    taskBox.appendChild(dateHeading)
+    taskBox.appendChild(dateItem)
+    taskBox.appendChild(priorityHeading)
+    taskBox.appendChild(priorityItem)
     displayContainer.appendChild(taskBox)
   }
 }
