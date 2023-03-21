@@ -1,6 +1,7 @@
+import {v4 as uuidv4} from 'uuid'
 export const Project = (name) => {
   let list = []
-  const getID = () => createID()
+  const getID = () => uuidv4()
   const getName = () => name
   const getList = () => list
   return {getID,
@@ -16,7 +17,7 @@ export const Project = (name) => {
 }
 
 export const Task = (title, description, dueDate , priority) => {
-  const getID = () => createID()
+  const getID = () => uuidv4()
   const getTitle = () => title
   const getDescription = () => description
   const getDueDate = () => dueDate
@@ -46,6 +47,3 @@ export const ProjectList = () => {
   }
 }
 
-function createID() {
-  return Math.random().toString(16).substring(2)
-}
