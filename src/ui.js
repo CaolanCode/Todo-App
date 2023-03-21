@@ -1,4 +1,5 @@
 import {Project, Task, ProjectList} from './project.js'
+import {format} from 'date-fns'
 
 export const createUI = () => {
   // container
@@ -287,8 +288,8 @@ const addTask = (project) => {
   taskSmbtBtn.addEventListener('click', () => {
     const title = titleInput.value
     const description = descriptionInput.value
-    const date = dateInput.value
-    const task = Task(title, description, date, priority)
+    const formattedDate = format(new Date(dateInput.value), 'dd/MM/yyyy')
+    const task = Task(title, description, formattedDate, priority)
     project.addTask(task)
     removeTaskInputContainer()
     displayList(project)
