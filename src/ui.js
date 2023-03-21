@@ -130,7 +130,7 @@ const projectOnSidebar = (projectList) => {
     deleteProjectBtn.addEventListener('click', () => {
       projectList.removeProject(project)
       projectOnSidebar(projectList)
-      displayList(project)
+      clearTasks()
     })
     projectBox.appendChild(deleteProjectBtn)
     projectTitleContainer.appendChild(projectBox)
@@ -320,3 +320,9 @@ const removeTaskInputContainer = () => {
   return false
 }
 
+const clearTasks = () => {
+  const header = document.querySelector('.project-title')
+  const displayContainer = document.querySelector('.task-display-container')
+  displayContainer.innerHTML = ""
+  header.innerText = 'List' 
+}
